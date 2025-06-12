@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/mohafaraj2016/renewable-energy-group-Udine/static/css/main.8f4cbe42.css",
+    "main.js": "/mohafaraj2016/renewable-energy-group-Udine/static/js/main.e7dad279.js",
+    "static/js/453.afbe6dbd.chunk.js": "/mohafaraj2016/renewable-energy-group-Udine/static/js/453.afbe6dbd.chunk.js",
+    "index.html": "/mohafaraj2016/renewable-energy-group-Udine/index.html",
+    "main.8f4cbe42.css.map": "/mohafaraj2016/renewable-energy-group-Udine/static/css/main.8f4cbe42.css.map",
+    "main.e7dad279.js.map": "/mohafaraj2016/renewable-energy-group-Udine/static/js/main.e7dad279.js.map",
+    "453.afbe6dbd.chunk.js.map": "/mohafaraj2016/renewable-energy-group-Udine/static/js/453.afbe6dbd.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8f4cbe42.css",
+    "static/js/main.e7dad279.js"
+  ]
+}
