@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import {
-  BrowserRouter as Router,
   Routes,
   Route,
   Link
@@ -58,7 +57,7 @@ export default function App() {
   }, [autoPlay, heroImages.length]);
 
   return (
-    <Router>
+    <>
       <div className="max-w-7xl mx-auto font-sans">
         <header className="flex flex-col md:flex-row items-center justify-between p-4 bg-white shadow text-center">
             <img src="/logo-Udine-2.png" alt="UniUd Logo" className="h-20 md:h-28 mb-2 md:mb-0" />
@@ -125,6 +124,6 @@ export default function App() {
         </Routes>
       </div>
       <Footer lang={lang} t={t} />
-    </Router>
+    </>
   );
 }
