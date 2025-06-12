@@ -10,7 +10,6 @@ import Collaborations from './pages/Collaborations';
 import Contact from './pages/Contact';
 import Data from './pages/Data';
 import Footer from './pages/Footer';
-import Hero from './pages/Hero';
 
 export default function App() {
   const [lang, setLang] = useState('en');
@@ -31,10 +30,8 @@ export default function App() {
       address: 'Indirizzo',
       usefulLinks: 'Link Utili',
       social: 'Social Media'
-
     }
   };
-  <Hero lang={lang} t={t} />
 
   const heroImages = [
     { src: `${process.env.PUBLIC_URL}/Hero_1.png`, captionEn: 'Solar Energy Research', captionIt: 'Ricerca sull’Energia Solare' },
@@ -61,14 +58,14 @@ export default function App() {
             alt="UniUd Logo"
             className="h-20 md:h-28 mb-2 md:mb-0"
           />
-            <h1 className="text-xl md:text-2xl font-bold text-gray-800 mx-4">
-                {t[lang].welcome}
-            </h1>
-            <img
-              src={`${process.env.PUBLIC_URL}/logo-renewable.png`}
-              alt="Renewable Energy Logo"
-              className="h-28"
-            />
+          <h1 className="text-xl md:text-2xl font-bold text-gray-800 mx-4">
+            {t[lang].welcome}
+          </h1>
+          <img
+            src={`${process.env.PUBLIC_URL}/logo-renewable.png`}
+            alt="Renewable Energy Logo"
+            className="h-28"
+          />
         </header>
 
         <div className="flex justify-end space-x-2 p-4">
@@ -77,33 +74,30 @@ export default function App() {
         </div>
 
         <section
-  className="relative h-96 bg-cover bg-center text-white flex flex-col items-end justify-end transition-all duration-1000"
-  style={{ backgroundImage: `url('${heroImages[currentImageIndex].src}')` }}
->
-  {/* Caption only */}
-  <div className="bg-black bg-opacity-60 px-4 py-2 mb-4 rounded text-white text-center">
-    <p className="text-sm md:text-base">
-      {lang === 'en'
-        ? heroImages[currentImageIndex].captionEn
-        : heroImages[currentImageIndex].captionIt}
-    </p>
-  </div>
+          className="relative h-96 bg-cover bg-center text-white flex flex-col items-end justify-end transition-all duration-1000"
+          style={{ backgroundImage: `url('${heroImages[currentImageIndex].src}')` }}
+        >
+          <div className="bg-black bg-opacity-60 px-4 py-2 mb-4 rounded text-white text-center">
+            <p className="text-sm md:text-base">
+              {lang === 'en'
+                ? heroImages[currentImageIndex].captionEn
+                : heroImages[currentImageIndex].captionIt}
+            </p>
+          </div>
+          <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
+            {heroImages.map((_, idx) => (
+              <button
+                key={idx}
+                onClick={() => {
+                  setCurrentImageIndex(idx);
+                  setAutoPlay(false);
+                }}
+                className={`h-3 w-3 rounded-full ${idx === currentImageIndex ? 'bg-white' : 'bg-gray-400'}`}
+              />
+            ))}
+          </div>
+        </section>
 
-  {/* Navigation dots */}
-  <div className="absolute bottom-3 left-1/2 transform -translate-x-1/2 flex space-x-2">
-    {heroImages.map((_, idx) => (
-      <button
-        key={idx}
-        onClick={() => {
-          setCurrentImageIndex(idx);
-          setAutoPlay(false);
-        }}
-        className={`h-3 w-3 rounded-full ${idx === currentImageIndex ? 'bg-white' : 'bg-gray-400'}`}
-      />
-    ))}
-  </div>
-</section>
-      
         <nav className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 text-white font-semibold">
           <Link to="/about" className="bg-blue-600 hover:bg-blue-700 py-3 px-4 text-center rounded">{t[lang].about}</Link>
           <Link to="/research" className="bg-green-600 hover:bg-green-700 py-3 px-4 text-center rounded">{t[lang].research}</Link>
