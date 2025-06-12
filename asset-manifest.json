@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/renewable-energy-group-Udine/static/css/main.1725748f.css",
-    "main.js": "/renewable-energy-group-Udine/static/js/main.f6917a97.js",
+    "main.js": "/renewable-energy-group-Udine/static/js/main.7d537ab7.js",
     "static/js/453.afbe6dbd.chunk.js": "/renewable-energy-group-Udine/static/js/453.afbe6dbd.chunk.js",
     "index.html": "/renewable-energy-group-Udine/index.html",
     "main.1725748f.css.map": "/renewable-energy-group-Udine/static/css/main.1725748f.css.map",
-    "main.f6917a97.js.map": "/renewable-energy-group-Udine/static/js/main.f6917a97.js.map",
+    "main.7d537ab7.js.map": "/renewable-energy-group-Udine/static/js/main.7d537ab7.js.map",
     "453.afbe6dbd.chunk.js.map": "/renewable-energy-group-Udine/static/js/453.afbe6dbd.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.1725748f.css",
-    "static/js/main.f6917a97.js"
+    "static/js/main.7d537ab7.js"
   ]
 }
