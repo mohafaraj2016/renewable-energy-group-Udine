@@ -1,3 +1,4 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+Sitemap: https://mohafaraj2016.github.io/renewable-energy-group-Udine/sitemap.xml
