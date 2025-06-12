@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  Routes,
-  Route,
-  Link
-} from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 
 import About from './pages/About';
 import Research from './pages/Research';
