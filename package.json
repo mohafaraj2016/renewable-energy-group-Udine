@@ -2,7 +2,7 @@
   "name": "renewable-energy-group",
   "homepage": "https://mohafaraj2016.github.io/renewable-energy-group-Udine",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
