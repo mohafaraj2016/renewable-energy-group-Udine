@@ -3,6 +3,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## ✅ 1. Ensure the environment is set
+
+cd your-project-folder
+### `npm install`
+
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -17,7 +23,17 @@ You may also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
+# ✅ 2. Stage, commit, and push your changes
+# Run the following commands in your terminal:
+### `git add .`
+### `git commit -m "Update data preview and plotting features"`
+### `git push origin main`
+
+# If your branch is called something other than main (e.g., master or gh-pages), change main to match.
+
+# ✅ 3. Build your React app
+
+This generates the static files to be deployed: Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
@@ -27,6 +43,37 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
+
+# ✅ 4. Deploy to GitHub Pages
+Assuming you’re using gh-pages (which you probably already configured), run:
+
+### `npm run deploy`
+
+This will automatically push the contents of the build/ directory to the gh-pages branch and update your public webpage.
+
+# 🧪 5. Verify deployment
+
+Visit:
+https://mohafaraj2016.github.io/renewable-energy-group-Udine/
+
+or your custom domain, if you configured one (like a university subdomain).
+
+# 📌 Optional: If npm run deploy fails
+
+Make sure your package.json contains:
+### `"homepage": "https://mohafaraj2016.github.io/renewable-energy-group-Udine",`
+#### `"scripts": {`
+###  ...
+###  `"predeploy": "npm run build",`
+###  `"deploy": "gh-pages -d build"`
+### `}`
+
+And that gh-pages is installed:
+
+### `npm install --save gh-pages`
+
+
+
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
