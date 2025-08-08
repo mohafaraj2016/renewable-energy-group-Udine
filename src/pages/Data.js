@@ -4,8 +4,8 @@ import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, CartesianGrid } from 'r
 
 export default function Data({ lang }) {
   const sections = {
-    'Solar Radiation': ['Data Logging_Linear_Mirror.csv'],
-    'Temperature': ['Data Logging_Linear_Mirror.csv'],
+    'Solar Radiation': ['Data Logging_Linear_Mirror.csv','Data_Logging_Linear_Mirror_31_07_25.csv','Data_Logging_Linear_Mirror_05_08_25.csv'],
+    'Temperature': ['Data Logging_Linear_Mirror.csv','Data_Logging_Linear_Mirror_31_07_25.csv','Data_Logging_Linear_Mirror_05_08_25.csv'],
   };
 
   const [selectedFile, setSelectedFile] = useState(null);
