@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 const heroImages = [
-    { src: '/Hero_1.png', captionEn: 'Solar Energy Research', captionIt: 'Ricerca sull’Energia Solare' },
-    { src: '/Hero_2.png', captionEn: 'Wind Tunnel Simulation', captionIt: 'Simulazione della Galleria del Vento' }
+    { src: `${process.env.PUBLIC_URL}/Device_1.png`, captionEn: 'Solar Energy Research', captionIt: 'Ricerca sull’Energia Solare' },
+    { src: `${process.env.PUBLIC_URL}/Hero_1.png`, captionEn: 'Wind Tunnel Simulation', captionIt: 'Simulazione della Galleria del Vento' }
   ];
 
 export default function Hero({ lang, t }) {

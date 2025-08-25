@@ -1,4 +1,3 @@
-// src/pages/Data.js
 import { useState } from 'react';
 import {
   LineChart,
@@ -13,7 +12,6 @@ import {
 export default function Data({ lang }) {
   const subsections = {
     'Linear Mirror Solar Concentrator': {
-      folder: 'Linear_Mirror_Solar_Concentrator',
       color: 'bg-yellow-200 hover:bg-yellow-300',
       description: lang === 'en'
         ? 'This section contains data collected from experiments using the Linear Mirror Solar Concentrator system, focusing on solar radiation and temperature behavior under different configurations.'
@@ -21,12 +19,11 @@ export default function Data({ lang }) {
       files: ['Data_Logging_Linear_Mirror.csv', 'Data_Logging_Linear_Mirror_31_07_25.csv', 'Data_Logging_Linear_Mirror_05_08_25.csv']
     },
     'Biomass Gasifier': {
-      folder: 'Gasifier_Data',
       color: 'bg-green-200 hover:bg-green-300',
       description: lang === 'en'
         ? 'This section contains experimental data from the biomass gasification setup, capturing temperature profiles, gas composition, and reaction conditions.'
         : 'Questa sezione contiene dati sperimentali del sistema di gassificazione della biomassa, inclusi profili di temperatura, composizione dei gas e condizioni di reazione.',
-      files: ['Gas_Measurement_Hay_Pellet.csv', 'Gas_Measurement_Straw_Pellet.csv', 'Gasification_of_Hay_pellet_test_24_02_25.csv', 'Gasification_of_Straw_Pellets_10_02_25.csv']
+      files: ['Biomass_Data_01.csv', 'Biomass_Data_02.csv']
     }
   };
 
@@ -41,8 +38,8 @@ export default function Data({ lang }) {
   const handlePreview = async (section, file) => {
     try {
       const encodedFile = encodeURIComponent(file);
-      const folder = subsections[section].folder;
-      const response = await fetch(`${process.env.PUBLIC_URL}/Data_folder/${folder}/${encodedFile}`);
+      const sectionFolder = section.replace(/ /g, '_');
+      const response = await fetch(`${process.env.PUBLIC_URL}/Data_folder/${sectionFolder}/${encodedFile}`);
       const text = await response.text();
       const lines = text.split('\n').filter(Boolean);
       setSelectedFile(file);
@@ -109,7 +106,7 @@ export default function Data({ lang }) {
               {subsections[selectedSection].files.map((file) => (
                 <li key={file} className="flex items-center space-x-4">
                   <a
-                    href={`/Data_folder/${subsections[selectedSection].folder}/${file}`}
+                    href={`/Data_folder/${selectedSection.replace(/ /g, '_')}/${file}`}
                     download
                     className="text-blue-600 hover:underline"
                   >

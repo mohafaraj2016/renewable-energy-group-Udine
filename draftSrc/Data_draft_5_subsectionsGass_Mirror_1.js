@@ -1,4 +1,3 @@
-// src/pages/Data.js
 import { useState } from 'react';
 import {
   LineChart,
@@ -13,20 +12,16 @@ import {
 export default function Data({ lang }) {
   const subsections = {
     'Linear Mirror Solar Concentrator': {
-      folder: 'Linear_Mirror_Solar_Concentrator',
-      color: 'bg-yellow-200 hover:bg-yellow-300',
       description: lang === 'en'
-        ? 'This section contains data collected from experiments using the Linear Mirror Solar Concentrator system, focusing on solar radiation and temperature behavior under different configurations.'
-        : 'Questa sezione contiene dati raccolti da esperimenti con il sistema Concentratore Solare a Specchio Lineare, focalizzati sulla radiazione solare e il comportamento della temperatura.',
-      files: ['Data_Logging_Linear_Mirror.csv', 'Data_Logging_Linear_Mirror_31_07_25.csv', 'Data_Logging_Linear_Mirror_05_08_25.csv']
+        ? 'Data collected from experiments using the Linear Mirror Solar Concentrator.'
+        : 'Dati raccolti da esperimenti con il Concentratore Solare a Specchio Lineare.',
+      files: ['Data_Logging_Linear_Mirror.csv', 'Data_Logging_Linear_Mirror_31_07_25.csv', 'Data_Logging_Linear_Mirror_05_08_25.csv'],
     },
     'Biomass Gasifier': {
-      folder: 'Gasifier_Data',
-      color: 'bg-green-200 hover:bg-green-300',
       description: lang === 'en'
-        ? 'This section contains experimental data from the biomass gasification setup, capturing temperature profiles, gas composition, and reaction conditions.'
-        : 'Questa sezione contiene dati sperimentali del sistema di gassificazione della biomassa, inclusi profili di temperatura, composizione dei gas e condizioni di reazione.',
-      files: ['Gas_Measurement_Hay_Pellet.csv', 'Gas_Measurement_Straw_Pellet.csv', 'Gasification_of_Hay_pellet_test_24_02_25.csv', 'Gasification_of_Straw_Pellets_10_02_25.csv']
+        ? 'Data collected from biomass gasification experiments.'
+        : 'Dati raccolti da esperimenti di gassificazione della biomassa.',
+      files: ['Biomass_Data_01.csv', 'Biomass_Data_02.csv']
     }
   };
 
@@ -41,8 +36,8 @@ export default function Data({ lang }) {
   const handlePreview = async (section, file) => {
     try {
       const encodedFile = encodeURIComponent(file);
-      const folder = subsections[section].folder;
-      const response = await fetch(`${process.env.PUBLIC_URL}/Data_folder/${folder}/${encodedFile}`);
+      const sectionFolder = section.replace(/ /g, '_');
+      const response = await fetch(`${process.env.PUBLIC_URL}/Data_folder/${sectionFolder}/${encodedFile}`);
       const text = await response.text();
       const lines = text.split('\n').filter(Boolean);
       setSelectedFile(file);
@@ -75,9 +70,9 @@ export default function Data({ lang }) {
           : "Esplora, visualizza e analizza set di dati da vari esperimenti sull'energia rinnovabile."}
       </p>
 
-      {/* Subsection buttons */}
-      <div className="flex flex-col md:flex-row gap-4 mb-6">
-        {Object.entries(subsections).map(([section, config]) => (
+      {/* Section buttons */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+        {Object.keys(subsections).map(section => (
           <button
             key={section}
             onClick={() => {
@@ -86,49 +81,44 @@ export default function Data({ lang }) {
               setPreviewContent([]);
               setCsvData([]);
             }}
-            className={`p-4 rounded-md shadow-md w-full md:w-1/2 text-left font-semibold transition ${config.color} ${
-              selectedSection === section ? 'ring-2 ring-offset-2 ring-blue-500' : ''
+            className={`p-4 rounded shadow-md transition-colors text-left ${
+              selectedSection === section ? 'bg-blue-100 border-2 border-blue-500' : 'bg-white hover:bg-gray-100'
             }`}
           >
-            {section}
+            <h2 className="text-lg font-semibold mb-1">{section}</h2>
+            <p className="text-sm text-gray-600">{subsections[section].description}</p>
           </button>
         ))}
       </div>
 
-      {/* Subsection description + file list */}
+      {/* File list and preview */}
       {selectedSection && (
-        <>
-          <div className="mb-6 bg-gray-50 border-l-4 border-blue-400 p-4">
-            <p className="text-gray-800">{subsections[selectedSection].description}</p>
-          </div>
+        <div className="mb-10">
+          <h2 className="text-xl font-semibold mb-4">{selectedSection}</h2>
 
-          <div className="mb-10">
-            <h2 className="text-xl font-semibold mb-4">{lang === 'en' ? 'Available Files:' : 'File Disponibili:'}</h2>
-
-            <ul className="space-y-2">
-              {subsections[selectedSection].files.map((file) => (
-                <li key={file} className="flex items-center space-x-4">
-                  <a
-                    href={`/Data_folder/${subsections[selectedSection].folder}/${file}`}
-                    download
-                    className="text-blue-600 hover:underline"
-                  >
-                    {file}
-                  </a>
-                  <button
-                    onClick={() => handlePreview(selectedSection, file)}
-                    className="px-2 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300"
-                  >
-                    {lang === 'en' ? 'Preview & Plot' : 'Anteprima e Grafico'}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </>
+          <ul className="space-y-2">
+            {subsections[selectedSection].files.map((file) => (
+              <li key={file} className="flex items-center space-x-4">
+                <a
+                  href={`/Data_folder/${selectedSection.replace(/ /g, '_')}/${file}`}
+                  download
+                  className="text-blue-600 hover:underline"
+                >
+                  {file}
+                </a>
+                <button
+                  onClick={() => handlePreview(selectedSection, file)}
+                  className="px-2 py-1 text-sm bg-gray-200 rounded hover:bg-gray-300"
+                >
+                  {lang === 'en' ? 'Preview & Plot' : 'Anteprima e Grafico'}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
 
-      {/* CSV preview table */}
+      {/* CSV table */}
       {selectedFile && (
         <div className="mt-6 border rounded p-4 bg-gray-50 overflow-x-auto">
           <h3 className="font-bold text-lg mb-4">
@@ -157,7 +147,7 @@ export default function Data({ lang }) {
         </div>
       )}
 
-      {/* CSV plot */}
+      {/* CSV chart */}
       {csvData.length > 0 && (
         <div className="mt-6">
           <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4 mb-4">

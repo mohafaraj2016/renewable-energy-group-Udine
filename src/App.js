@@ -34,7 +34,7 @@ export default function App() {
   };
 
   const heroImages = [
-    { src: `${process.env.PUBLIC_URL}/Hero_1.png`, captionEn: 'Solar Energy Research', captionIt: 'Ricerca sull’Energia Solare' },
+    { src: `${process.env.PUBLIC_URL}/Device_1.png`, captionEn: 'Solar Energy Research', captionIt: 'Ricerca sull’Energia Solare' },
     { src: `${process.env.PUBLIC_URL}/Hero_2.png`, captionEn: 'Wind Tunnel Simulation', captionIt: 'Simulazione della Galleria del Vento' },
   ];
 
